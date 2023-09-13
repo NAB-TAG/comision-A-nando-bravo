@@ -1,10 +1,11 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const helmetMiddleware = require('./src/middleware/helmet');
-const morganMiddleware = require('./src/middleware/morgan');
-const corsMiddleware = require('./src/middleware/cors');
-const routes = require('./src/routes');
+const helmetMiddleware = require('./middleware/helmet');
+const morganMiddleware = require('./middleware/morgan');
+const corsMiddleware = require('./middleware/cors');
+const routes = require('./routes');
 const path = require('path');
+const db = require('./config/database');
 
 dotenv.config();
 const app = express();
