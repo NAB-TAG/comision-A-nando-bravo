@@ -3,18 +3,18 @@ const dotenv = require('dotenv');
 const helmetMiddleware = require('./middleware/helmet');
 const morganMiddleware = require('./middleware/morgan');
 const corsMiddleware = require('./middleware/cors');
-const routes = require('./routes');
 const path = require('path');
-const db = require('./config/database');
 
 dotenv.config();
 const app = express();
-app.use('/', require('./routes'))
 app.use(helmetMiddleware);
 app.use(morganMiddleware);
 app.use(corsMiddleware);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+const db = require('./config/database');
+app.use('/', require('./routes'))
+const routes = require('./routes');
 
 app.use(express.static(__dirname + "/public"))
 

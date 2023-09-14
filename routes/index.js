@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 // const Posts = require('../src/models/posts')
-const {Tests} = require('../config/database')
+const {Posts} = require('../config/database')
 
 // layout principal
 router.get('/', (req, res) => {
@@ -25,20 +25,16 @@ router.get('/add', (req, res) => {
 // Agregar publicacion en mysql
 router.post('/add', async (req, res) => {
     try {
-    //   const { title, content, image } = req.body;
-        Tests ? console.log("si existe el modelo test"):console.log("no existe el modelo test");
-      // Crear una nueva instancia de Posts utilizando el método create
-      const createTest = await Tests.create({
-        title: "sfadsfafa"
-      })
-    //   const nuevaPublicacion = await Posts.create({
-    //     title: "asdfasdf",
-    //     content: "asndflansldfk",
-    //     image: "adfasdfasd fasaf",
-    //   });
-  
-      // Redireccionar a la página de detalles de la nueva publicación o a donde sea necesario
-    //   res.redirect(`/detail/${nuevaPublicacion.id}`);
+        const { title, content, image } = req.body;
+        // Crea una nueva instancia de Posts utilizando los datos del formulario
+        const nuevaPublicacion = await Posts.create({
+          title,
+          content,
+          image,
+        });
+    
+        // Redirecciona a la página de detalles de la nueva publicación o a donde sea necesario
+        res.redirect(`/`);
     } catch (error) {
       console.error('Error al agregar la publicación:', error);
       res.status(500).send('Error al agregar la publicación');

@@ -20,7 +20,7 @@
         <div class="card mt-2 mx-auto p-4 bg-light">
             <div class="card-body bg-light">
             <div class = "container">
-                <form id="contact-form" role="form" method="post" action="/add">
+                <form id="contact-form" role="form" method="POST" action="/add">
             <div class="controls">
 
                 <div class="row">
@@ -33,8 +33,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="form_lastname">Imagen </label>
-                            <input id="form_lastname" type="text" name="image" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                            <label for="form_name">Imagen</label>
+                            <input id="form_name" type="text" name="image" class="form-control" placeholder="Ingresa el titulo" required="required" data-error="Firstname is required.">
+                            
                         </div>
                     </div>
                 </div>
@@ -42,7 +43,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="form_message">Descripcion </label>
-                            <textarea id="form_message" name="description" class="form-control" placeholder="Escribe tu descripcion" rows="4" required="required" data-error="Please, leave us a message."></textarea
+                            <textarea id="form_message" name="content" class="form-control" placeholder="Escribe tu descripcion" rows="4" required="required" data-error="Please, leave us a message."></textarea
                                 >
                             </div>
 

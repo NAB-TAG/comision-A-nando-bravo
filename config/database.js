@@ -13,11 +13,24 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, pr
 // Define el modelo Tests
 const Tests = sequelize.define('Test', {
   title: {
-    type: DataTypes.STRING, // Tipo de dato del campo (cadena de texto en este caso)
-    allowNull: false,       // No se permite que el campo esté vacío
+    type: DataTypes.STRING, 
+    allowNull: false,       
   },
 });
-
+const Posts = sequelize.define('Post', {
+  title: {
+    type: DataTypes.STRING, 
+    allowNull: false,       
+  },
+  content: {
+    type: DataTypes.STRING, 
+    allowNull: false,       
+  },
+  image: {
+    type: DataTypes.STRING, 
+    allowNull: false,       
+  },
+})
 // ...
 
-module.exports = { sequelize, Tests };
+module.exports = { sequelize, Tests, Posts };
