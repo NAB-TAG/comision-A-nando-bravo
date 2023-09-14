@@ -1,0 +1,72 @@
+<%- include("template/head", {title: 'Editar Publicacion'}) %>
+<div class="container">
+    <div class="col-lg-7 mx-auto mt-2">
+        
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+              <!-- <li class="breadcrumb-item"><a href="/">Inicio</a></li> -->
+              <li class="breadcrumb-item active" aria-current="page">Editar publicacion : <%= id %></li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class=" text-center mt-5 ">
+        <h1 ><%= title %></h1>
+    </div>
+
+    
+    <div class="row ">
+      <div class="col-lg-7 mx-auto">
+        <div class="card mt-2 mx-auto p-4 bg-light">
+            <div class="card-body bg-light">
+            <div class = "container">
+                <form id="contact-form" role="form">
+            <div class="controls">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_name">Titulo</label>
+                            <input id="form_name" type="text" name="name" class="form-control" placeholder="Ingresa el titulo" required="required" data-error="Firstname is required.">
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_lastname">Imagen </label>
+                            <input id="form_lastname" type="file" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="form_message">Descripcion </label>
+                            <textarea id="form_message" name="message" class="form-control" placeholder="Escribe tu descripcion" rows="4" required="required" data-error="Please, leave us a message."></textarea
+                                >
+                            </div>
+
+                        </div>
+
+
+                    <div class="col-md-12">
+                        
+                        <input type="submit" class="btn btn-success btn-send mt-2 pt-2 btn-block
+                            " value="Editar" >
+                    
+                </div>
+          
+                </div>
+
+
+        </div>
+         </form>
+        </div>
+            </div>
+    </div>
+    </div>
+
+</div>
+</div>
+<%- include("template/footer") %>
