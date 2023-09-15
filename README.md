@@ -23,4 +23,10 @@ Asegurate de tener una base de datos mysql con un puerto 3306, de no ser asi cam
    ```bash
    npx sequelize db:migrate
 
+4. **Ejecutar la aplicacion
+
+   ```bash
+   node app.js
+   
+
 
