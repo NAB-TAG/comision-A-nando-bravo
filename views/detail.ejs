@@ -15,12 +15,12 @@
         <!-- Main content -->
             <div class="col-lg-9 mb-3">
               
-              <!-- End of post 1 -->
+              
               <div class="card row-hover pos-relative py-3 px-3 mb-3 border-primary border-top-0 border-right-0 border-bottom-0 rounded-0">
                 <div class="row align-items-center">
                   <div class="col-md-8 mb-3 mb-sm-0">
                     <h3><%= title %></h3>
-                    <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">20 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">Anonymus</a></p>
+                    <p class="text-sm"><span class="op-6">Publicado el </span> <a class="text-black" href="#"><%= date %></a> <span class="op-6">Por</span> <a class="text-black" href="#">Anonymus</a></p>
                     <!-- <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#C++</a> <a class="text-black mr-2" href="#">#AppStrap Theme</a> <a class="text-black mr-2" href="#">#Wordpress</a> </div> -->
                   </div>
                   
@@ -29,23 +29,24 @@
                         <p>
                         <%= content %>
                         </p>
+                        <img src="<%= image %>" alt="" class="img-fluid">
                     </div>
                   </div>
-                  <div class="col-md-12 d-flex justify-content-end">
+                  <div class="col-md-12 d-flex justify-content-end mt-4">
                     <a href="/delete/<%= id %>" class="btn btn-danger me-2">Eliminar</a>
                     <a href="/edit/<%= id %>" class="btn btn-primary me-2">Editar</a>
-                    <a href="" class="btn btn-success">Responder</a>
+                    <a href="#" class="btn btn-success disabled">Responder</a>
                   </div>
                 </div>
               </div>
-              <!-- /End of post 2 -->
+            
               <div class="card col-md-11 offset-1 row-hover pos-relative py-3 px-3 mb-3 border-danger border-top-0 border-right-0 border-bottom-0 rounded-0">
                 <div class="row align-items-center">
                   <div class="col-md-12 mb-3 mb-sm-0">
                     <p class="text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">20 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">KenyeW</a></p>
                   </div>
-                  
-                  <div class="col-md-12 op-7">
+                  <!-- Para futuras extensiones -->
+                  <!-- <div class="col-md-12 op-7">
                     <div class="row op-7">
                         <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ipsam pariatur unde
@@ -59,10 +60,11 @@
                           mollitia natus nisi culpa placeat dicta.
                         </p>
                     </div>
-                  </div>
+                    
+                  </div> -->
                 </div>
               </div>
-              <!-- /End of post 2 -->
+              
               
             </div>
             <!-- Sidebar content -->
@@ -73,47 +75,32 @@
                     Active Topics
                   </h4>
                   <hr class="m-0">
-                  <div class="pos-relative px-3 py-3">
-                    <h6 class="text-primary text-sm">
-                      <a href="#" class="text-primary">Why Bootstrap 4 is so awesome? </a>
-                    </h6>
-                    <p class="mb-0 text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">39 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">AppStrapMaster</a></p>
-                  </div>
-                  <hr class="m-0">
-                  <div class="pos-relative px-3 py-3">
-                    <h6 class="text-primary text-sm">
-                      <a href="#" class="text-primary">Custom shortcut or command to launch command in terminal? </a>
-                    </h6>
-                    <p class="mb-0 text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">58 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">DanielD</a></p>
-                  </div>
-                  <hr class="m-0">
-                  <div class="pos-relative px-3 py-3">
-                    <h6 class="text-primary text-sm">
-                      <a href="#" class="text-primary">HELP! My Windows XP machine is down </a>
-                    </h6>
-                    <p class="mb-0 text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">48 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">DanielD</a></p>
-                  </div>
-                  <hr class="m-0">
-                  <div class="pos-relative px-3 py-3">
-                    <h6 class="text-primary text-sm">
-                      <a href="#" class="text-primary">HELP! My Windows XP machine is down </a>
-                    </h6>
-                    <p class="mb-0 text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">38 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">DanielD</a></p>
-                  </div>
-                  <hr class="m-0">
+                
+                  <% if (posts.length) { %>
+                   <% posts.forEach(post => { %>
+                    <div class="pos-relative px-3 py-3">
+                      <h6 class="text-primary text-sm">
+                        <a href="/detail/<%= post.id %>/<%= post.title %>/<%= post.content %>" class="text-primary"><%= post.title %> </a>
+                      </h6>
+                      <p class="mb-0 text-sm"><span class="op-6">Posted</span> <a class="text-black" href="#">39 minutes</a> <span class="op-6">ago by</span> <a class="text-black" href="#">AppStrapMaster</a></p>
+                    </div>
+                    <hr class="m-0">
+                   <% }) %>
+                  <% } %>
+                  
                 </div>
                 <div class="bg-white text-sm">
                   <h4 class="px-3 py-4 op-5 m-0 roboto-bold">
-                    Stats
+                    Estado del Foro
                   </h4>
                   <hr class="my-0">
                   <div class="row text-center d-flex flex-row op-7 mx-0">
-                    <div class="col-sm-6 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold" href="#">58</a> Topics </div>
-                    <div class="col-sm-6 col flex-ew text-center py-3 border-bottom mx-0"> <a class="d-block lead font-weight-bold" href="#">1.856</a> Posts </div>
+                    <div class="col-sm-6 flex-ew text-center py-3 border-bottom border-right"> <a class="d-block lead font-weight-bold" href="#">Proxi...</a> Comentarios </div>
+                    <div class="col-sm-6 col flex-ew text-center py-3 border-bottom mx-0"> <a class="d-block lead font-weight-bold" href="/"><%= posts_count %></a> Publicaciones </div>
                   </div>
                   <div class="row d-flex flex-row op-7">
-                    <div class="col-sm-6 flex-ew text-center py-3 border-right mx-0"> <a class="d-block lead font-weight-bold" href="#">300</a> Members </div>
-                    <div class="col-sm-6 flex-ew text-center py-3 mx-0"> <a class="d-block lead font-weight-bold" href="#">DanielD</a> Newest Member </div>
+                    <div class="col-sm-6 flex-ew text-center py-3 border-right mx-0"> <a class="d-block lead font-weight-bold" href="#">Proxi...</a> Miembros </div>
+                    <div class="col-sm-6 flex-ew text-center py-3 mx-0"> <a class="d-block lead font-weight-bold" href="#">Proxi...</a> Ultimo Miembro </div>
                   </div>
                 </div>
               </div></div>
