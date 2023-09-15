@@ -66,8 +66,15 @@ router.post('/add', async (req, res) => {
   });
 
 // layout editar publicacion
-router.get('/edit/:id', (req, res) => {
-    res.render('formEdit', { title: 'Editar', id: req.params.id})
+router.get('/edit/:id', async (req, res) => {
+    try {
+        
+        const post = await Posts.findByPk(req.params.id);
+        // console.log(post.dataValues)
+        res.render('formEdit', { title: 'Editar', id: req.params.id, post: post.dataValues})
+    } catch (error) {
+        
+    }
 });
 // Editar publicacion
 router.post('/edit/:id', async (req, res) => {

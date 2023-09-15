@@ -27,14 +27,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="form_name">Titulo</label>
-                            <input id="form_name" type="text" name="title" class="form-control" placeholder="Ingresa el titulo" required="required" data-error="Firstname is required.">
+                            <input id="form_name" type="text" name="title" class="form-control" placeholder="Ingresa el titulo" required="required" data-error="Firstname is required." value="<%= post.title %>">
                             
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="form_lastname">Imagen </label>
-                            <input id="form_lastname" type="text" name="image" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                            <input id="form_lastname" type="text" name="image" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required." value="<%= post.image %>">
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="form_message">Descripcion </label>
-                            <textarea id="form_message" name="content" class="form-control" placeholder="Escribe tu descripcion" rows="4" required="required" data-error="Please, leave us a message."></textarea
+                            <textarea id="form_message" name="content" class="form-control" placeholder="Escribe tu descripcion" rows="4" required="required" data-error="Please, leave us a message."><%= post.content %></textarea
                                 >
                             </div>
 
