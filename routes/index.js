@@ -7,13 +7,14 @@ const request = require('request');
 // layout principal : mostrar todas las publicaciones
 router.get('/', async (req, res) => {
     try {
+        // Mostrar todos los posts y lo convierte en un array de objetos
         const posts = await Posts.findAll({});
         const postsData = posts.map(post => post.dataValues);
         // Renderiza el index con los datos
         res.render('index', {h1: "mi titulo", posts: postsData});
     } catch (error) {
-      console.error('Error al agregar la publicación:', error);
-      res.status(500).send('Error al agregar la publicación');
+      console.error('Error al mostrar la publicación:', error);
+      res.status(500).send('Error al mostrar la publicación');
     }
   });
 
@@ -21,13 +22,14 @@ router.get('/', async (req, res) => {
 router.get('/detail/:id/:title/:content/:image/:day/:month/:year', async (req, res) => {
     try {
         const imageUrl = req.params.image;
+        
         // convierto la url en una imagen base64
         request({ url: imageUrl, encoding: null }, (error, response, body) => {
             if (!error && response.statusCode === 200) {
               // Convertir la imagen en base64
               const base64Image = Buffer.from(body).toString('base64');
               // Puedes usar la imagen en base64 como desees
-              console.log(base64Image);
+              // console.log(base64Image);
             } else {
               console.error('Error al descargar la imagen:', error);
             }
@@ -41,8 +43,8 @@ router.get('/detail/:id/:title/:content/:image/:day/:month/:year', async (req, r
         
         res.render('detail', {id: req.params.id, title: req.params.title, image:req.params.image, content: req.params.content, posts: postsData, posts_count: postsCount.count, date: `${req.params.day}/${req.params.month}/${req.params.year}`})
     } catch (error) {
-        console.error('Error al agregar la publicación:', error);
-        res.status(500).send('Error al agregar la publicación');
+        console.error('Error al mostrar los detalles de la publicación:', error);
+        res.status(500).send('Error al mostrar los detalles de la publicación');
     }
 });
 
@@ -68,12 +70,14 @@ router.post('/add', async (req, res) => {
 // layout editar publicacion
 router.get('/edit/:id', async (req, res) => {
     try {
-        
+
+        // buscar el post con determinado id 
         const post = await Posts.findByPk(req.params.id);
-        // console.log(post.dataValues)
         res.render('formEdit', { title: 'Editar', id: req.params.id, post: post.dataValues})
+
     } catch (error) {
-        
+        console.error('Error al editar la publicación:', error);
+        res.status(500).send('Error al editar la publicación');
     }
 });
 // Editar publicacion
@@ -84,8 +88,8 @@ router.post('/edit/:id', async (req, res) => {
         // Redirecciona a la pagina principal
         res.redirect(`/`);
     } catch (error) {
-      console.error('Error al agregar la publicación:', error);
-      res.status(500).send('Error al agregar la publicación');
+      console.error('Error al editar la publicación:', error);
+      res.status(500).send('Error al editar la publicación');
     }
   });
 
@@ -102,23 +106,9 @@ router.get('/delete/:id', async (req, res) => {
         }
         res.redirect('/'); 
     } catch (error) {
-      console.error('Error al agregar la publicación:', error);
-      res.status(500).send('Error al agregar la publicación');
+      console.error('Error al borrar la publicación:', error);
+      res.status(500).send('Error al borrar la publicación');
     }
   });
-router.get('/mascotas', (req, res) => {
-    console.log()
-    res.render('mascotas', {
-        arrayMascotas: [
-            {id: '1', nombre: 'duke', descripcion: 'aiasdnfansdlfnasdkfjnaskdjfn'},
-            {id: '2', nombre: 'osito', descripcion: 'asdofjasidlfjmlakds fmlakdsn lajdsnjlasd fn'},
-        ]
-    })
-});
-
-router.get('/componente1', (req, res) => {
-    // Renderiza la vista 'componente1' dentro de la plantilla base 'layout'
-    res.render('componente1', { pageTitle: 'Componente 1' });
-});
 
 module.exports = router;

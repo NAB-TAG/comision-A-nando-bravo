@@ -10,13 +10,7 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, pr
   },
 });
 
-// Define el modelo Tests
-const Tests = sequelize.define('Test', {
-  title: {
-    type: DataTypes.STRING, 
-    allowNull: false,       
-  },
-});
+// Definne el modelo posts
 const Posts = sequelize.define('Post', {
   title: {
     type: DataTypes.STRING, 
@@ -33,4 +27,4 @@ const Posts = sequelize.define('Post', {
 })
 // ...
 
-module.exports = { sequelize, Tests, Posts };
+module.exports = { sequelize, Posts };

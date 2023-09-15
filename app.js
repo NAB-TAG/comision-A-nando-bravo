@@ -3,17 +3,14 @@ const dotenv = require('dotenv');
 const helmetMiddleware = require('./middleware/helmet');
 const morganMiddleware = require('./middleware/morgan');
 const corsMiddleware = require('./middleware/cors');
-const helmet = require('helmet');
 const path = require('path');
-
+const helmet = require('helmet');
 dotenv.config();
 const app = express();
-// app.use(helmet());
-app.use(
-  helmet({
-    contentSecurityPolicy: false,
-  })
-);
+// app.use(helmetMiddleware);
+app.use(helmet({
+  contentSecurityPolicy: false
+}))
 app.use(morganMiddleware);
 app.use(corsMiddleware);
 app.use(express.json());
